@@ -28,12 +28,12 @@ jobs:
         run: jsonnet -S -m . ./jsonnet/main.jsonnet
 
       - name: Pack cskin
-        # 文件名即安装后的皮肤名，必须为「空山素影」
-        # 包内需带 jsonnet 源码（浮动面板「微调/按键」功能依赖）和 demo.png 预览图
+        # 元书导入时把 zip 直接解压到 Skins/，皮肤名取自 zip 内的顶层目录名，
+        # 所以包内必须有一层「空山素影」目录，否则内容会平铺在 Skins/ 根下
         run: |
-          zip -r "空山素影.cskin" \
-            config.yaml demo.png jsonnet light dark README.md \
-            -x '*.DS_Store'
+          mkdir "空山素影"
+          mv config.yaml demo.png jsonnet light dark README.md "空山素影/"
+          zip -r "空山素影.cskin" "空山素影" -x '*.DS_Store'
 
       # 每次构建都在运行页面留存可下载的产物（保留 90 天）
       - name: Upload artifact
