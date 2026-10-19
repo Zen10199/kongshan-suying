@@ -1,10 +1,15 @@
-# 打 tag（v 开头，如 v1.0.0）时自动编译皮肤并发布 .cskin 到 Release
+# 推 main：自动编译验证（不发布）
+# 打 tag（v 开头，如 v1.0.0）：编译并发布 .cskin 到 Release
+# 也可在 Actions 页面手动触发（Run workflow 按钮）
 name: Build and release skin
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -28,6 +33,7 @@ jobs:
             config.yaml light dark README.md
 
       - name: Create release and upload
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
