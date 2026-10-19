@@ -255,7 +255,10 @@ local settings = import '../Settings.libsonnet';
     params: {
       action: { character: 'z' },
       uppercased: { action: { character: 'Z' } },
-      swipeUp: { action: { character: '@' } },
+      swipeUp: {
+        action: { character: '`' },
+        text: '反查',
+      },
       swipeDown: {
         action: { shortcut: '#undo' },
         text: '撤',
