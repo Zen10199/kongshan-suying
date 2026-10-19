@@ -1,10 +1,3 @@
-// 提取对象中指定的属性
-local extractProperty(obj, key) =
-  if std.objectHas(obj, key) then
-    { [key]: obj[key] }
-  else
-    {};
-
 // 提取对象中多个指定的属性
 local extractProperties(obj, keys) =
   { [key]: obj[key] for key in keys if std.objectHas(obj, key) };
@@ -140,21 +133,6 @@ local newAssetImageStyle(params={}, isDark=false) =
   );
 
 
-local newFileImageStyle(params={}) =
-
-  local type = { buttonStyleType: 'fileImage' };
-
-  type
-  + extractProperties(
-    params,
-    [
-      'insets',
-      'contentMode',
-      'normalImage',
-      'highlightImage',
-    ]
-  );
-
 local newTextStyle(params={}, isDark=false) =
 
   local type = { buttonStyleType: 'text' };
@@ -262,7 +240,6 @@ local capitalize(s) =
   else std.asciiUpper(s[0:1]) + s[1:];
 
 {
-  extractProperty: extractProperty,
   extractProperties: extractProperties,
   excludeProperties: excludeProperties,
   setColor: setColor,
@@ -270,7 +247,6 @@ local capitalize(s) =
   newGeometryStyle: newGeometryStyle,
   newSystemImageStyle: newSystemImageStyle,
   newAssetImageStyle: newAssetImageStyle,
-  newFileImageStyle: newFileImageStyle,
   newTextStyle: newTextStyle,
   newBackgroundStyle: newBackgroundStyle,
   newForegroundStyle: newForegroundStyle,
