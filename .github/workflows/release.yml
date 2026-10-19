@@ -28,9 +28,12 @@ jobs:
         run: jsonnet -S -m . ./jsonnet/main.jsonnet
 
       - name: Pack cskin
+        # 文件名即安装后的皮肤名，必须为「空山素影」
+        # 包内需带 jsonnet 源码（浮动面板「微调/按键」功能依赖）和 demo.png 预览图
         run: |
-          zip -r "kongshan-suying-${GITHUB_REF_NAME}.cskin" \
-            config.yaml light dark README.md
+          zip -r "空山素影.cskin" \
+            config.yaml demo.png jsonnet light dark README.md \
+            -x '*.DS_Store'
 
       # 每次构建都在运行页面留存可下载的产物（保留 90 天）
       - name: Upload artifact
@@ -45,6 +48,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$GITHUB_REF_NAME" --generate-notes \
-            "kongshan-suying-${GITHUB_REF_NAME}.cskin" \
+            "空山素影.cskin" \
           || gh release upload "$GITHUB_REF_NAME" \
-            "kongshan-suying-${GITHUB_REF_NAME}.cskin" --clobber
+            "空山素影.cskin" --clobber
