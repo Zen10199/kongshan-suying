@@ -63,7 +63,7 @@
   # bottomLeft   ↙️左下角
   # bottom       ⬇️正下方
   # bottomRight  ↘️右下角
-  swipeUpTextCenter: 'top',
+  swipeUpTextCenter: 'hide',
   swipeDownTextCenter: 'hide',
 
 
@@ -120,9 +120,9 @@
     capsLocked: { systemImageName: 'capslock.fill', },
 
     whenPreeditChanged: {
-      action: { character: "'" },
+      action: { character: "`" },
       systemImageName: 'square.and.line.vertical.and.square',
-      text: '分词',
+      text: '反查',
 
       # action: 'tab',
       # systemImageName: 'arrow.right.to.line',
