@@ -32,6 +32,13 @@ jobs:
           zip -r "kongshan-suying-${GITHUB_REF_NAME}.cskin" \
             config.yaml light dark README.md
 
+      # 每次构建都在运行页面留存可下载的产物（保留 90 天）
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kongshan-suying-${{ github.ref_name }}
+          path: '*.cskin'
+
       - name: Create release and upload
         if: startsWith(github.ref, 'refs/tags/')
         env:
