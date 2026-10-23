@@ -93,7 +93,7 @@
   # 28-命令视图
   #
   # 将上述代号填入下面的数组即可
-  toolbarSlideButtons: [ 8, 17, 1, 10, 12, 28 ],
+  toolbarSlideButtons: [ 8, 17, 1, 3, 28, 10, 12 ],
 
   # 滑动按钮区域占几个按键宽度
   toolbarSlideButtonsMaxCount: {
