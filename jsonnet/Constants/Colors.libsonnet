@@ -12,16 +12,16 @@ local labelColor = {
     dark: '#FFFFFF',
   },
   secondary: {
-    light: '#8a8a8a',
-    dark: '#b6b7b9',
+    light: '#8E8E93',
+    dark: '#AEAEB2',
   },
   tertiary: {
-    light: '#c4c4c4',
-    dark: '#5d5d5d',
+    light: '#C7C7CC',
+    dark: '#48484A',
   },
   quaternary: {
-    light: '#dcdcdc',
-    dark: '#404040',
+    light: '#E5E5EA',
+    dark: '#3A3A3C',
   },
 };
 
@@ -39,14 +39,14 @@ local keyboardBackgroundColor = {
 
 // 标准按键背景色（如字母按键、空格键等）
 local standardButtonBackgroundColor = {
-  light: '#FFFFFF',
-  dark: '#D1D1D165',
+  light: '#FFFFFFD9',
+  dark: '#FFFFFF29',
 };
 
 // 标准按键按下时的背景色
 local standardButtonHighlightedBackgroundColor = {
-  light: '#E6E6E6',
-  dark: '#D1D1D624',
+  light: '#00000026',
+  dark: '#FFFFFF52',
 };
 
 // 标准按键前景色（如字母按键、空格键等），用于按键的字体，图片等
@@ -60,19 +60,19 @@ local alternativeHighlightedForegroundColor = alternativeForegroundColor;
 
 // 标准按键阴影颜色
 local standardButtonShadowColor = {
-  light: '#898A8D',
+  light: '#00000030',
   dark: '#000000',
 };
 
 // 系统按键（如回车、删除等）背景颜色
 local systemButtonBackgroundColor = {
-  light: '#E6E6E6',
-  dark: '#D1D1D624',
+  light: '#FFFFFFD9',
+  dark: '#FFFFFF29',
 };
 
 local systemButtonHighlightedBackgroundColor = {
-  light: '#FFFFFF',
-  dark: '#D1D1D659',
+  light: '#00000026',
+  dark: '#FFFFFF52',
 };
 
 // 系统按键（如回车、删除等）前景颜色
@@ -85,23 +85,23 @@ local accentColors = [
   // 在这里检查一下对比度 https://webaim.org/resources/contrastchecker/
   // 确保前景色和背景色的对比度足够高（至少大于 3）以保证可读性
   { // red
-    background: '#da4357',
+    background: '#FF3B30D9',
     foreground: '#ffffff',
   },
   { // green
-    background: '#50A545',
+    background: '#34C759D9',
     foreground: '#ffffff',
   },
   { // orange
-    background: '#E86E30',
+    background: '#FF9500D9',
     foreground: '#ffffff',
   },
   { // blue
-    background: '#2e67f8',
+    background: '#007AFFD9',
     foreground: '#ffffff',
   },
   { // purple
-    background: '#7A72B8',
+    background: '#AF52DED9',
     foreground: '#ffffff',
   },
 ];
@@ -130,20 +130,20 @@ local colorButtonHighlightedForegroundColor = labelColor.primary;
 
 // 按键底部边缘颜色
 local lowerEdgeOfButtonNormalColor = {
-  light: '#898A8D',
-  dark: '#1E1E1E',
+  light: '#0000001F',
+  dark: '#00000066',
 };
 
 // 按下状态下，按键底部边缘颜色
 local lowerEdgeOfButtonHighlightColor = {
-  light: '#898A8D',
-  dark: '#1D1D1D',
+  light: '#0000001F',
+  dark: '#00000066',
 };
 
 // 标准按键 Hint 背景色(包含长按符号列表的背景色)
 local standardCalloutBackgroundColor = {
-  light: '#f8f8f8',
-  dark: '#6B6B6B',
+  light: '#F2F2F7',
+  dark: '#2C2C2E',
 };
 
 // 标准按键 Hint 前景色，用于按键的字体，图片等
@@ -157,7 +157,7 @@ local standardCalloutSelectedBackgroundColor = colorButtonBackgroundColor;
 // 标准按键 Hint 边框颜色
 local standardCalloutBorderColor = {
   light: '#C6C6C8',
-  dark: '#606060',
+  dark: '#48484A',
 };
 
 // 预编辑区文字颜色
