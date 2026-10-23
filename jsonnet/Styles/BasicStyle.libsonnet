@@ -1153,12 +1153,16 @@ local newSpaceButtonForegroundStyle(params, schemaNameText, isDark=false) =
       fontSize: fonts.systemButtonTextFontSize,
     }
     else {})
+  // 显示指示（拼/A 或方案名）时隐藏空格中央的图标/字符
+  + (if showModeIndicator || showSchemaName then { systemImageName: null } else {})
   + (
     if showModeIndicator then {
       foregroundStyleName: spaceButtonForegroundStyle,
       foregroundStyle: {
+        // 独立英文键盘直接显示 A（键盘类型切换不走 ascii_mode 通知）；
+        // 中文键盘内切英文则由 spaceAsciiModeChangedNotification 实时切换
         [spaceButtonModeCnForegroundStyleName]: utils.newTextStyle({
-          text: '拼',
+          text: if schemaNameText == 'English' then 'A' else '拼',
           fontSize: fonts.alternativeTextFontSize,
           center: spaceButtonModeIndicatorCenter,
           normalColor: colors.alternativeForegroundColor,
