@@ -1,3 +1,5 @@
+local settings = import '../Settings.libsonnet';
+
 {
   preeditFontSize: 17,
 
@@ -11,7 +13,11 @@
 
   t9ButtonTextFontSize: 18,
 
-  standardButtonTextFontSize: 22.5,
+  // 关闭上下滑提示显示时，小写字母与 iOS 键盘一致；显示提示时略小给提示小字留空间
+  standardButtonTextFontSize:
+    if settings.swipeUpTextCenter == 'hide' && settings.swipeDownTextCenter == 'hide'
+    then 25.3
+    else 22.5,
   standardButtonUppercasedTextFontSize: 21.5,
   standardButtonImageFontSize: 20,
 
