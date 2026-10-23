@@ -4,13 +4,18 @@
 - 符号键盘布局包括默认、全键盘、分类符号等布局。
 - 不包含图片资源，风格接近原生键盘。
 - 工具栏滑动按钮自定义，方便快速对工具栏进行个性化设置，且可以设置为纯文本工具栏。
-- 空格键显示当前输入方案名称，方便查看当前输入方案。
+- 空格键右下角显示中英指示「拼/A」或输入方案名称（可配置），随时知道当前输入状态。
 - 中文模式下字母键大写显示，英文模式下字母键小写显示，是中文还是英文一目了然。
 - shift 键在打字过程中充当“反查”功能（反查符号为输入反引号 `，可以在“微调”中调整为其它符号）。
 - 支持按键上下划动功能，26键盘布局可以输入 PC 键盘上的所有符号，可快速设置是否显示划动提示文字。
 - a,z,x,c,v 五个按键下划对应全选、撤销、剪切、复制、粘贴，与 PC 键盘习惯一致。
 - 按键支持特定的自定义语法，可以非常简单地实现各种按键功能。
-- 主题色可选，满足不同用户的审美需求。
+- 主题色可选（iOS 系统色：红绿橙蓝紫），满足不同用户的审美需求。
+- 键盘配色 iOS 风格化：玻璃质感键帽（浅色 85% 白 / 深色半透明白），按下浅色变暗、深色提亮，配 iOS 式按压缩放动画（轻缩 0.96、快按缓弹）。
+- 空格键可显示中英指示「拼/A」（随中英切换实时刷新，含独立英文键盘），或输入方案名称，见「微调」中 spaceButtonDisplay。
+- 工具栏滑动按钮：默认顺序 符号键盘/RimeSwitcher/脚本/剪贴板/命令视图(⌘)，全部 28 个按钮代号可自由配置。
+- 删除键打字中上滑默认删除一个音节，可配置为清空输入框全部内容（backspaceSwipeUpWhenComposing）。
+- 可选按键音（keySound，默认关闭，皮肤自带合成音效）。
 - 可以使用浮动面板中的“微调”功能对皮肤进行快速调整。
 
 ## 上下划动功能说明
@@ -62,6 +67,7 @@ jsonnet -S -m . --tla-code debug=true ./jsonnet/main.jsonnet
 ```
 
 ## github 仓库地址
-- [空山素影](https://github.com/luozikuan/kongshan-suying)
-- [最新版本发布地址](https://github.com/luozikuan/kongshan-suying/releases/latest)
+- [空山素影（本仓库）](https://github.com/Zen10199/kongshan-suying)
+- [最新版本发布地址](https://github.com/Zen10199/kongshan-suying/releases/latest)
+- [上游原仓库](https://github.com/luozikuan/kongshan-suying)
 - [配套测试方案](https://github.com/luozikuan/rime-tailor)

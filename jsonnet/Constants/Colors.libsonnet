@@ -60,7 +60,7 @@ local alternativeHighlightedForegroundColor = alternativeForegroundColor;
 
 // 标准按键阴影颜色
 local standardButtonShadowColor = {
-  light: '#00000030',
+  light: '#00000014',
   dark: '#000000',
 };
 
@@ -130,14 +130,14 @@ local colorButtonHighlightedForegroundColor = labelColor.primary;
 
 // 按键底部边缘颜色
 local lowerEdgeOfButtonNormalColor = {
-  light: '#0000001F',
-  dark: '#00000066',
+  light: '#00000012',
+  dark: '#00000040',
 };
 
 // 按下状态下，按键底部边缘颜色
 local lowerEdgeOfButtonHighlightColor = {
-  light: '#0000001F',
-  dark: '#00000066',
+  light: '#00000012',
+  dark: '#00000040',
 };
 
 // 标准按键 Hint 背景色(包含长按符号列表的背景色)

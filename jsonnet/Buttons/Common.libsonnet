@@ -83,9 +83,19 @@ local settings = import '../Settings.libsonnet';
       systemImageName: 'delete.left',
       highlightSystemImageName: 'delete.left.fill',
 	  whenPreeditChanged: {
-		swipeUp: {
-          action: { sendKeys: 'Control+Backspace' } // 删除一个音节
-		},
+		swipeUp:
+          if settings.backspaceSwipeUpWhenComposing == 'clear' then {
+            // 清空输入框全部内容（全选+剪切）
+            action: {
+              combine: [
+                { shortcut: '#selectText' },
+                { shortcut: '#cut' },
+              ],
+            },
+          }
+          else {
+            action: { sendKeys: 'Control+Backspace' }, // 删除一个音节
+          },
 	  },
     },
   },

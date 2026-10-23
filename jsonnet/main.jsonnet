@@ -24,19 +24,27 @@ local nameToComponent = {
 local getFileName(componentName, isPortrait) =
   componentName + (if isPortrait then 'Portrait' else 'Landscape');
 
-local config = {
-  [name]: {
-    iPhone: {
-      portrait: getFileName(name, isPortrait=true),
-      landscape: getFileName(name, isPortrait=false),
+local config =
+  {
+    [if settings.keySound then 'keySound']: {
+      input: 'input.wav',
+      delete: 'delete.wav',
+      system: 'system.wav',
     },
-    iPad: {
-      portrait: getFileName(name, isPortrait=true),
-      landscape: getFileName(name, isPortrait=false),
-      floating: getFileName(name, isPortrait=true),
-    },
-  } for name in std.objectFields(nameToComponent)
-};
+  }
+  + {
+    [name]: {
+      iPhone: {
+        portrait: getFileName(name, isPortrait=true),
+        landscape: getFileName(name, isPortrait=false),
+      },
+      iPad: {
+        portrait: getFileName(name, isPortrait=true),
+        landscape: getFileName(name, isPortrait=false),
+        floating: getFileName(name, isPortrait=true),
+      },
+    } for name in std.objectFields(nameToComponent)
+  };
 
 // std.toString 生成的内容紧凑，生成速度快，但不易阅读，适合发布时使用
 // std.manifestYamlDoc 生成的内容格式化良好，易于阅读，但生成速度慢，也更占用内存，适合在电脑上调试时使用

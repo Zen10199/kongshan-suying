@@ -95,10 +95,10 @@ local buttonAnimationName = 'scaleAnimation';
 local newButtonAnimation() = {
   [buttonAnimationName]: {
     animationType: 'scale',
-    isAutoReverse: true,
-    scale: 0.87,
-    pressDuration: 60,
-    releaseDuration: 80,
+    isAutoReverse: false,
+    scale: 0.96,
+    pressDuration: 90,
+    releaseDuration: 120,
   },
 };
 

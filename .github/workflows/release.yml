@@ -34,6 +34,7 @@ jobs:
         run: |
           mkdir "空山素影"
           mv config.yaml demo.png jsonnet light dark README.md "空山素影/"
+          if [ -d sound ]; then cp -R sound "空山素影/"; fi
           python3 -c "
           import os, zipfile
           with zipfile.ZipFile('空山素影.cskin', 'w', zipfile.ZIP_DEFLATED) as z:

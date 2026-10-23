@@ -138,6 +138,15 @@
   },
 
 
+  # 删除键在打字中的上滑动作：
+  # 'syllable' 删除一个音节（默认，原功能）
+  # 'clear'    清空输入框全部内容（全选+剪切，微信输入法式）
+  backspaceSwipeUpWhenComposing: 'syllable',
+
+  # 是否启用按键音（皮肤自带合成音效，需元书 TF 386 / 商店 1.6.20+）
+  # true 开启，false 关闭
+  keySound: false,
+
   # Rime 方案中的快符
   quickAction:
     { character: ';' },
