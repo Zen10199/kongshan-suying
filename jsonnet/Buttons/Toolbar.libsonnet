@@ -100,6 +100,15 @@ local settings = import '../Settings.libsonnet';
         text: '脚本',
       },
     },
+
+    toolbarCommandViewButton: {
+      name: 'toolbarCommandViewButton',
+      params: {
+        action: { shortcut: '#toggleCommandView' },
+        systemImageName: 'command',
+        text: '命令',
+      },
+    },
     toolbarClipboardButton: {
       name: 'toolbarClipboardButton',
       params: {

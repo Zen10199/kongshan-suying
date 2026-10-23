@@ -47,8 +47,12 @@ local settings = import '../Settings.libsonnet';
       systemImageName: 'space',
       center: {x: 0.5, y: 0.5},
       notification:
-        (if settings.spaceButtonSchemaNameCenter != null then
+        (if settings.spaceButtonDisplay == 'schema' && settings.spaceButtonSchemaNameCenter != null then
           ['rimeSchemaChangedNotification']
+        else [])
+        +
+        (if settings.spaceButtonDisplay == 'mode' then
+          ['spaceAsciiModeChangedNotification']
         else []),
 
       whenPreeditChanged: {

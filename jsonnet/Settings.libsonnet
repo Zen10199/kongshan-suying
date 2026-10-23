@@ -45,14 +45,20 @@
   iPad: false,
 
 
+  # 空格上显示的内容（公用同一显示机制）：
+  # 'mode'   : 中英指示——中文「拼」/ 英文「A」，随中英切换实时刷新（右下角）
+  # 'schema' : 显示当前输入方案名称（位置见 spaceButtonSchemaNameCenter）
+  # null     : 不显示
+  spaceButtonDisplay: 'mode',
+
   # 空格键方案名称显示位置
   # x, y 取值范围为 [0, 1]
   # x 值越小越靠左，y 值越小越靠上
   # 特殊值 null 表示不显示方案名称
   spaceButtonSchemaNameCenter:
-    { x: 0.2, y: 0.7 }, # 左下角
+    null,                # 默认不显示方案名称
+    # { x: 0.2, y: 0.7 }, # 左下角
     # { x: 0.5, y: 0.5 }, # 中间
-    # null,               # 不显示
 
 
   # 上下滑动提示文字显示位置
@@ -84,9 +90,10 @@
   # 20-全选  21-复制  22-剪切
   # 23-粘贴  24-撤销  25-重做
   # 26-左移  27-右移
+  # 28-命令视图
   #
   # 将上述代号填入下面的数组即可
-  toolbarSlideButtons: [ 8, 17, 1, 2, 3, 10, 12 ],
+  toolbarSlideButtons: [ 8, 17, 1, 10, 12, 28 ],
 
   # 滑动按钮区域占几个按键宽度
   toolbarSlideButtonsMaxCount: {
@@ -108,7 +115,7 @@
   # 中文模式下，字母键是否大写显示
   # 注意：17键布局、注音佈局、西戈码布局下此设置无效
   # true 大写，false 小写
-  uppercaseForChinese: true,
+  uppercaseForChinese: false,
 
 
   # shiftButton 的功能定义

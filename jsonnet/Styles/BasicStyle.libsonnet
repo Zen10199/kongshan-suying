@@ -1105,7 +1105,13 @@ local newSpaceButtonRimeSchemaForegroundStyle(schemaNameText, isDark=false) =
     }, isDark),
   };
 
-local showSchemaName = settings.spaceButtonSchemaNameCenter != null;
+local showSchemaName = settings.spaceButtonDisplay == 'schema' && settings.spaceButtonSchemaNameCenter != null;
+
+// 中英指示模式：中文「拼」/ 英文「A」，随 ascii_mode 实时刷新
+local showModeIndicator = settings.spaceButtonDisplay == 'mode';
+local spaceButtonModeIndicatorCenter = { x: 0.88, y: 0.7 };
+local spaceButtonModeCnForegroundStyleName = 'spaceButtonModeCnForegroundStyle';
+local spaceButtonModeEnForegroundStyleName = 'spaceButtonModeEnForegroundStyle';
 local showSchemaNameAtCenter = utils.normalizeCenter(settings.spaceButtonSchemaNameCenter) == utils.normalizeCenter({}); // 特殊处理显示在中间的，直接将其显示在空格文本上，不用额外增加一个前景样式
 local needCornerSchemaName = showSchemaName && !showSchemaNameAtCenter;
 
@@ -1116,6 +1122,12 @@ local spaceButtonForegroundStyle = [
 + (
   if needCornerSchemaName then [
     spaceButtonRimeSchemaForegroundStyleName,
+  ]
+  else []
+  )
++ (
+  if showModeIndicator then [
+    spaceButtonModeCnForegroundStyleName,
   ]
   else []
   );
@@ -1140,15 +1152,44 @@ local newSpaceButtonForegroundStyle(params, schemaNameText, isDark=false) =
       systemImageName: null,
       fontSize: fonts.systemButtonTextFontSize,
     }
+    else {})
+  + (
+    if showModeIndicator then {
+      foregroundStyleName: spaceButtonForegroundStyle,
+      foregroundStyle: {
+        [spaceButtonModeCnForegroundStyleName]: utils.newTextStyle({
+          text: '拼',
+          fontSize: fonts.alternativeTextFontSize,
+          center: spaceButtonModeIndicatorCenter,
+          normalColor: colors.alternativeForegroundColor,
+          highlightColor: colors.alternativeHighlightedForegroundColor,
+        }, isDark),
+        [spaceButtonModeEnForegroundStyleName]: utils.newTextStyle({
+          text: 'A',
+          fontSize: fonts.alternativeTextFontSize,
+          center: spaceButtonModeIndicatorCenter,
+          normalColor: colors.alternativeForegroundColor,
+          highlightColor: colors.alternativeHighlightedForegroundColor,
+        }, isDark),
+      },
+    }
     else {});
 
 local rimeSchemaChangedNotification =
   {
-    [if settings.spaceButtonSchemaNameCenter != null then 'rimeSchemaChangedNotification']: {
+    [if showSchemaName then 'rimeSchemaChangedNotification']: {
       notificationType: 'rime',
       rimeNotificationType: 'schemaChanged',
       backgroundStyle: alphabeticButtonBackgroundStyleName,
       foregroundStyle: spaceButtonForegroundStyle,
+    },
+    [if showModeIndicator then 'spaceAsciiModeChangedNotification']: {
+      notificationType: 'rime',
+      rimeNotificationType: 'optionChanged',
+      rimeOptionName: 'ascii_mode',
+      rimeOptionValue: true,
+      backgroundStyle: alphabeticButtonBackgroundStyleName,
+      foregroundStyle: [spaceButtonForegroundStyleName, spaceButtonModeEnForegroundStyleName],
     },
   };
 
