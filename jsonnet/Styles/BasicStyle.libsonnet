@@ -720,6 +720,7 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
   }),
 
   // 构建前景样式名列表（主前景 + 上下划前景）
+  // eventParams.extraForegroundStyleNames: 追加不受事件影响的常驻前景（如中英指示）
   local _buildForegroundStyleList(baseForegroundName, suffix, eventParams) =
     [baseForegroundName + suffix + 'ForegroundStyle']
     + (
@@ -730,7 +731,8 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
       if std.objectHas(eventParams, 'swipeDown') && root.showSwipeDownText then
         [generateSwipeForegroundStyleName(baseForegroundName, 'Down', suffix)]
       else []
-    ),
+    )
+    + std.get(eventParams, 'extraForegroundStyleNames', []),
 
   // 构建前景样式名替换映射（用于 replaceGivenPairs）
   local _buildForegroundReplacementMap(suffix, eventParams) = {
@@ -1072,6 +1074,7 @@ local newSystemButton(name, isDark=false, params={}) =
     .AddPropertiesInParams()
     .AddUppercasedState(newSystemButtonForegroundStyle)
     .AddCapsLockedState(newSystemButtonForegroundStyle)
+    .AddAnimation()
     .AddLongPress()
     .AddPreeditChangeEvent(newSystemButtonForegroundStyle)
     .AddKeyboardActionEvent(newSystemButtonForegroundStyle)
@@ -1089,6 +1092,7 @@ local newColorButton(name, isDark=false, params={}) =
     .AddPropertiesInParams()
     .AddUppercasedState(newColorButtonForegroundStyle)
     .AddCapsLockedState(newColorButtonForegroundStyle)
+    .AddAnimation()
     .AddLongPress()
     .AddPreeditChangeEvent(newColorButtonForegroundStyle)
     .AddKeyboardActionEvent(newColorButtonForegroundStyle)
@@ -1138,8 +1142,13 @@ local spaceButtonForegroundStyle = [
   );
 
 local newSpaceButtonForegroundStyle(params, schemaNameText, isDark=false) =
+  // 输入态(选定)时保留常驻的角标前景，避免中英指示在打字瞬间消失又闪回
+  local keepStyleNameInPreedit =
+    if showModeIndicator then spaceButtonModeCnForegroundStyleName
+    else if needCornerSchemaName then spaceButtonRimeSchemaForegroundStyleName
+    else null;
   std.mergePatch(params,
-    if needCornerSchemaName then {
+    (if needCornerSchemaName then {
       foregroundStyleName: spaceButtonForegroundStyle,
 
       foregroundStyle: {
@@ -1158,6 +1167,11 @@ local newSpaceButtonForegroundStyle(params, schemaNameText, isDark=false) =
       fontSize: fonts.systemButtonTextFontSize,
     }
     else {})
+    + (
+      if std.objectHas(params, 'whenPreeditChanged') && keepStyleNameInPreedit != null then
+        { whenPreeditChanged: { extraForegroundStyleNames: [keepStyleNameInPreedit] } }
+      else {}
+    ))
   // 显示指示（拼/A 或方案名）时隐藏空格中央的图标/字符
   + (if showModeIndicator || showSchemaName then { systemImageName: null } else {})
   + (
@@ -1183,6 +1197,7 @@ local newSpaceButtonForegroundStyle(params, schemaNameText, isDark=false) =
       },
     }
     else {});
+  // 空格键与字母键一致，仅保留整键按压缩放动画
 
 local rimeSchemaChangedNotification =
   {
