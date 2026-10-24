@@ -573,17 +573,22 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
         showSwipeUpText: showSwipeText,
       }
     else
-      local swipeUpParams = if hasSwipeUpParams then root.params.swipeUp else {};
+      local swipeUpParams = root.params.swipeUp;
+      // swipeUp.hideText: true 时保留上划动作，但键面不常驻显示提示文字
+      local hideText = std.objectHas(swipeUpParams, 'hideText') && swipeUpParams.hideText;
+      local showText = showSwipeText && !hideText;
       root {
-        showSwipeUpText: showSwipeText,
+        showSwipeUpText: showText,
         [root.name]+: {
             [if std.objectHas(swipeUpParams, 'action') then 'swipeUpAction']: swipeUpParams.action,
-            [if showSwipeText then 'foregroundStyle']+: [generateSwipeForegroundStyleName(root.name, 'Up')],
+            [if showText then 'foregroundStyle']+: [generateSwipeForegroundStyleName(root.name, 'Up')],
           },
-        reference+: {
-            [if showSwipeText then generateSwipeForegroundStyleName(root.name, 'Up')]:
-              newAlphabeticButtonAlternativeForegroundStyle(root.isDark, { center: swipeUpTextCenter } + swipeUpParams),
-          },
+        reference+: (
+            if showText then {
+              [generateSwipeForegroundStyleName(root.name, 'Up')]:
+                newAlphabeticButtonAlternativeForegroundStyle(root.isDark, { center: swipeUpTextCenter } + swipeUpParams),
+            } else {}
+          ),
       },
 
   AddSwipeDown(showSwipeText):

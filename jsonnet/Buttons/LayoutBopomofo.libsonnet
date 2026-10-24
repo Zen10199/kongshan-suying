@@ -333,11 +333,12 @@ local commonButtons = import './Common.libsonnet';
       action: { symbol: '，', },
       // 主字用 Hamster 内置图片（同 hamster 皮肤）：字形居中与用户字体无关
       assetImageName: 'Comma',
+      // 内置图自带留白，负 insets 把字形放大；大小不合适只改这里
+      insets: { left: -10, right: -10, top: -10, bottom: -10 },
 
       swipeUp: {
         action: { symbol: '。' },
-        text: '。',
-        center: { y: 0.3 },
+        hideText: true,  // 键面不常驻句号提示，避免与主字看起来像两个句号
       },
 
       longPress: [
@@ -346,10 +347,6 @@ local commonButtons = import './Common.libsonnet';
         { action: { symbol: '、' } },
         { action: { symbol: '……' } },
       ],
-
-      OnAlphabetic: {
-        swipeUp: { text: '.', center: { y: 0.28 } },
-      },
     },
   },
 
