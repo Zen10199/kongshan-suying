@@ -331,8 +331,8 @@ local commonButtons = import './Common.libsonnet';
     name: 'commaButton',
     params: {
       action: { symbol: '，', },
-      text: '，',
-      center: { y: 0.52 },
+      // 主字用 Hamster 内置图片（同 hamster 皮肤）：字形居中与用户字体无关
+      assetImageName: 'Comma',
 
       swipeUp: {
         action: { symbol: '。' },
@@ -348,7 +348,6 @@ local commonButtons = import './Common.libsonnet';
       ],
 
       OnAlphabetic: {
-        text: ',', center: { y: 0.48 },
         swipeUp: { text: '.', center: { y: 0.28 } },
       },
     },

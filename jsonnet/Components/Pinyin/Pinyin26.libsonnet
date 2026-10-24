@@ -181,6 +181,7 @@ local newKeyLayout(isDark=false, isPortrait=true, keyboardType=KeyboardType.Chin
     commonButtons.commaButton.name,
     isDark,
     portraitNormalButtonSize + utils.processButtonParams(isAlphabetic, commonButtons.commaButton.params) + basicStyle.hintStyleSize,
+    needHint=false,
     swipeTextFollowSetting=false,
   )
   + basicStyle.newAlphabeticButton(

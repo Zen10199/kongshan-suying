@@ -97,6 +97,7 @@ local newKeyLayout(isDark=false, isPortrait=true) =
     isDark,
     { size: { width: { percentage: 0.12 } } }
     + commonButtons.commaButton.params + basicStyle.hintStyleSize,
+    needHint=false,
     swipeTextFollowSetting=false,
   )
   + basicStyle.newAlphabeticButton(

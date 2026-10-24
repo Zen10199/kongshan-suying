@@ -267,8 +267,8 @@ local settings = import '../Settings.libsonnet';
     name: 'commaButton',
     params: {
       action: { character: ',', },
-      text: '，',
-      center: { y: 0.52 },
+      // 主字用 Hamster 内置图片（同 hamster 皮肤）：字形居中与用户字体无关
+      assetImageName: 'Comma',
 
       swipeUp: {
         action: { character: '.' },
@@ -277,7 +277,6 @@ local settings = import '../Settings.libsonnet';
       },
 
       OnAlphabetic: {
-        text: ',', center: { y: 0.48 },
         swipeUp: { text: '.', center: { y: 0.28 } },
       },
     },
