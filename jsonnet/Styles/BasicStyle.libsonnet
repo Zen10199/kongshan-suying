@@ -1042,6 +1042,7 @@ local newButton(name, type='alphabetic', isDark=false, params={}) =
 local newToolbarButton(name, isDark=false, params={}) =
   local button = newButton(name, 'system', isDark, params)
     .AddForegroundStyle(newToolbarButtonForegroundStyle)
+    .AddAnimation()
     .AddPropertiesInParams()
     .AddRimeOptionChangeEvent();
   button.GetButton() + button.reference;

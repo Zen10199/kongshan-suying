@@ -70,6 +70,7 @@ local newExpandButton(isDark) = {
     {
       size: { width: 44 },
       action: { shortcut: '#candidatesBarStateToggle' },
+      animation: [basicStyle.buttonAnimationName],
     }
     + utils.newForegroundStyle(style=expandButtonName + 'ForegroundStyle'),
   [expandButtonName + 'ForegroundStyle']:
@@ -148,6 +149,7 @@ local newVerticalCandidatePageUpButtonStyle(isDark) = {
     + utils.newForegroundStyle(style=verticalCandidatePageUpButtonStyleName + 'ForegroundStyle')
     + {
       action: keyboardParams.verticalCandidateStyle.pageUpButton.action,
+      animation: [basicStyle.buttonAnimationName],
     },
   [verticalCandidatePageUpButtonStyleName + 'ForegroundStyle']:
     utils.newSystemImageStyle(keyboardParams.verticalCandidateStyle.pageUpButton, isDark),
@@ -159,6 +161,7 @@ local newVerticalCandidatePageDownButtonStyle(isDark) = {
     + utils.newForegroundStyle(style=verticalCandidatePageDownButtonStyleName + 'ForegroundStyle')
     + {
       action: keyboardParams.verticalCandidateStyle.pageDownButton.action,
+      animation: [basicStyle.buttonAnimationName],
     },
   [verticalCandidatePageDownButtonStyleName + 'ForegroundStyle']:
     utils.newSystemImageStyle(keyboardParams.verticalCandidateStyle.pageDownButton, isDark),
@@ -171,6 +174,7 @@ local newVerticalCandidateReturnButtonStyle(isDark) = {
     + utils.newForegroundStyle(style=verticalCandidateReturnButtonStyleName + 'ForegroundStyle')
     + {
       action: keyboardParams.verticalCandidateStyle.returnButton.action,
+      animation: [basicStyle.buttonAnimationName],
     },
   [verticalCandidateReturnButtonStyleName + 'ForegroundStyle']:
     utils.newSystemImageStyle(keyboardParams.verticalCandidateStyle.returnButton, isDark),
@@ -182,6 +186,7 @@ local newVerticalCandidateBackspaceButtonStyle(isDark) = {
     + utils.newForegroundStyle(style=verticalCandidateBackspaceButtonStyleName + 'ForegroundStyle')
     + {
       action: 'backspace',
+      animation: [basicStyle.buttonAnimationName],
     },
   [verticalCandidateBackspaceButtonStyleName + 'ForegroundStyle']:
     utils.newSystemImageStyle(

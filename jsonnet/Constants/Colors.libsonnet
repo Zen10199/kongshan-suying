@@ -166,8 +166,8 @@ local preeditForegroundColor = standardButtonForegroundColor;
 // 工具栏按钮前景色
 local toolbarButtonForegroundColor = standardButtonForegroundColor;
 
-// 工具栏按钮高亮前景色
-local toolbarButtonHighlightedForegroundColor = standardButtonForegroundColor;
+// 工具栏按钮高亮前景色（按下时变淡，与键盘按键的按压反馈呼应）
+local toolbarButtonHighlightedForegroundColor = labelColor.secondary;
 
 // 候选字亮候选字背景颜色
 local candidateHighlightColor = standardButtonBackgroundColor;
